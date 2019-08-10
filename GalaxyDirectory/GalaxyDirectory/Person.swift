@@ -13,7 +13,7 @@ struct Person {
     var firstName: String
     var lastName: String
     var birthdate: String
-    var profilePicture: String
+    var profilePicture: URL?
     var forceSensitive: Bool
     var affiliation: String
     
@@ -22,7 +22,7 @@ struct Person {
         firstName       = dict["firstName"] as! String
         lastName        = dict["lastName"] as! String
         birthdate       = dict["birthdate"] as! String
-        profilePicture  = dict["profilePicture"] as! String
+        profilePicture  = URL(string: dict["profilePicture"] as! String)
         forceSensitive  = dict["forceSensitive"] as! Bool
         affiliation     = dict["affiliation"] as! String
     }

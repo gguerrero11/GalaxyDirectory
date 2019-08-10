@@ -9,7 +9,7 @@
 import Foundation
 
 struct Storage {
-    static let defaults = UserDefaults.standard
+    fileprivate static let defaults = UserDefaults.standard
     
     static func SaveDict(dict: [[String:Any]]) {
         defaults.set(dict, forKey: "data")

@@ -15,6 +15,7 @@ class DirectoryTableViewController: UITableViewController {
     let session = Alamofire.Session()
     var personArray = [Person]()
     var affiliations = Set<String>()
+    var selectedIndex: IndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +57,35 @@ class DirectoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
         let person = personArray[indexPath.row]
         cell.nameLabel.text = person.firstName + " " + person.lastName
-//        cell.profilePic.from
+        
+        if let picURL = person.profilePicture {
+            cell.profilePic.load(url: picURL)
+            cell.profilePic.clipsToBounds = true
+        }
         return cell
     }
-
+    
 }
 
 class PersonCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var affiliation: UILabel!
     @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var birthdate: UILabel!
+    @IBOutlet weak var forceSensitive: UILabel!
+}
+
+extension UIImageView {
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }
 

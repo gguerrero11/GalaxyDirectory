@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="17o-Lq-73w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8sG-8A-bOp">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="121" id="LW7-8I-N5A" customClass="PersonCell" customModule="GalaxyDirectory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="121"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="734" id="LW7-8I-N5A" customClass="PersonCell" customModule="GalaxyDirectory" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="734"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LW7-8I-N5A" id="dhQ-33-PHw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120.66666666666667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="733.66666666666663"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-8q-v9f">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.55000000000000004" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-8q-v9f">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
@@ -34,22 +34,56 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUPREME LEADER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mE4-au-Bib">
-                                            <rect key="frame" x="149" y="30" width="210" height="38"/>
+                                            <rect key="frame" x="148" y="30" width="211" height="39"/>
                                             <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
+                                            <color key="shadowColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESISTANCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-wE-gvH">
+                                            <rect key="frame" x="266" y="64" width="93" height="25"/>
+                                            <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1963-05-05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kar-nQ-gff">
+                                            <rect key="frame" x="265" y="89" width="94" height="25"/>
+                                            <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FORCE SENSITIVE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-Rz-C3K">
+                                            <rect key="frame" x="225" y="114" width="134" height="25"/>
+                                            <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="1" height="1"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Kar-nQ-gff" secondAttribute="bottom" constant="10.666666666666629" id="0T5-7e-HRa"/>
                                         <constraint firstItem="mE4-au-Bib" firstAttribute="top" secondItem="dhQ-33-PHw" secondAttribute="top" constant="30" id="Hva-Ks-F1e"/>
+                                        <constraint firstItem="OF5-Rz-C3K" firstAttribute="top" secondItem="Kar-nQ-gff" secondAttribute="bottom" id="Tgy-9L-h7r"/>
+                                        <constraint firstItem="Kar-nQ-gff" firstAttribute="trailing" secondItem="l4A-wE-gvH" secondAttribute="trailing" id="UH1-zV-7QC"/>
+                                        <constraint firstItem="Kar-nQ-gff" firstAttribute="top" secondItem="l4A-wE-gvH" secondAttribute="bottom" id="WuV-NB-7jZ"/>
                                         <constraint firstItem="BbI-8q-v9f" firstAttribute="leading" secondItem="dhQ-33-PHw" secondAttribute="leading" id="cJi-g8-JeJ"/>
+                                        <constraint firstItem="l4A-wE-gvH" firstAttribute="trailing" secondItem="mE4-au-Bib" secondAttribute="trailing" id="cgS-Ru-GHN"/>
                                         <constraint firstItem="BbI-8q-v9f" firstAttribute="top" secondItem="dhQ-33-PHw" secondAttribute="top" id="fhR-qG-HQu"/>
                                         <constraint firstAttribute="bottom" secondItem="BbI-8q-v9f" secondAttribute="bottom" constant="-0.33333333333334281" id="iOl-mE-zk3"/>
+                                        <constraint firstItem="l4A-wE-gvH" firstAttribute="top" secondItem="mE4-au-Bib" secondAttribute="bottom" constant="-5" id="pgf-qA-ttF"/>
                                         <constraint firstAttribute="trailing" secondItem="BbI-8q-v9f" secondAttribute="trailing" id="tRf-cv-B2A"/>
                                         <constraint firstAttribute="trailing" secondItem="mE4-au-Bib" secondAttribute="trailing" constant="16" id="uOe-G9-3Db"/>
+                                        <constraint firstItem="OF5-Rz-C3K" firstAttribute="trailing" secondItem="mE4-au-Bib" secondAttribute="trailing" id="yUo-aU-hos"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="affiliation" destination="l4A-wE-gvH" id="VN6-h4-dCF"/>
+                                    <outlet property="birthdate" destination="Kar-nQ-gff" id="xek-sF-Tw3"/>
+                                    <outlet property="forceSensitive" destination="OF5-Rz-C3K" id="QkW-Xa-dtv"/>
                                     <outlet property="nameLabel" destination="mE4-au-Bib" id="Lwp-Ge-XHe"/>
                                     <outlet property="profilePic" destination="BbI-8q-v9f" id="Mvn-e5-5S6"/>
                                 </connections>
@@ -89,9 +123,6 @@
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="8sG-8A-bOp" kind="relationship" relationship="rootViewController" id="AF9-gP-G8m"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ja-DB-agU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
