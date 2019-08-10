@@ -67,19 +67,22 @@ class DirectoryTableViewController: UITableViewController {
         cell.detailBottomConstraint.constant = -40
         cell.forceSensitive.isHidden = !person.forceSensitive
         cell.selectionStyle = .none
+        cell.profilePic.clipsToBounds = true
         
         // If picture exists...
         if let pic = person.profilePicture {
             cell.profilePic.image = pic
         } else {
             // then check storage...
-            
-            if let picURL = person.profilePictureURL {
-                cell.profilePic.load(url: picURL)
-                cell.profilePic.clipsToBounds = true
+            if let storedImage = Storage.GetImage(forID: person.id) {
+                cell.profilePic.image = storedImage
+            } else {
+                // then download from URL (and save)
+                if let picURL = person.profilePictureURL {
+                    cell.profilePic.load(url: picURL, forID: person.id)
+                }
             }
         }
-
         return cell
     }
     
@@ -102,7 +105,7 @@ class DirectoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let expandedHeight: CGFloat = 131 //view.frame.height - 125
+        let expandedHeight: CGFloat = 150 //view.frame.height - 125
         let shrunkHeight: CGFloat = 121
         var result = shrunkHeight
         if let selectedRow = selectedIndex?.row {
@@ -122,12 +125,13 @@ class PersonCell: UITableViewCell {
 }
 
 extension UIImageView {
-    func load(url: URL) {
+    func load(url: URL, forID: Int) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.image = image
+                        Storage.StoreImage(image: image, forID: forID)
                     }
                 }
             }

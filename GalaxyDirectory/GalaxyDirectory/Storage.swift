@@ -10,41 +10,31 @@ import Foundation
 import UIKit
 
 struct Storage {
-    
-    var imageStorage = [Int:Data]()
+
+//    Attempted to store the imageStorage dictionary instead, but somewhat overkill. Just opted to use the defaults key with
+//    its ID appended as a more simpler solution
+//    fileprivate static var imageStorage = [Int:Data]()
+
     
     fileprivate static let defaults = UserDefaults.standard
     
     static func SaveDict(dict: [[String:Any]]) {
         defaults.set(dict, forKey: "data")
     }
-    
+        
     static func LoadDict()->[[String:Any]]? {
         return defaults.value(forKey: "data") as? [[String : Any]]
     }
-    
-    static func GetImage(forID: Int)->UIImage {
-        let imageData = UIImage.jpegData(<#T##UIImage#>)
-    }
-    
-    static func SaveImage(image: UIImage, forID: Int) {
-        let imageData = UIImage.jpegData(image)
         
+    static func GetImage(forID: Int)->UIImage? {
+        guard let defaultImageData = defaults.value(forKey: "imageStorageID: \(forID)") as? Data else { return nil }
+        guard let image = UIImage(data: defaultImageData) else { return nil }
+        return image
     }
     
-    
-//    // Get image data. Here you can use UIImagePNGRepresentation if you need transparency
-//    NSData *imageData =
-//    
-//    // Get image path in user's folder and store file with name image_CurrentTimestamp.jpg (see documentsPathForFileName below)
-//    NSString *imagePath = [self documentsPathForFileName:[NSString stringWithFormat:@"image_%f.jpg", [NSDate timeIntervalSinceReferenceDate]]];
-//    
-//    // Write image data to user's folder
-//    [imageData writeToFile:imagePath atomically:YES];
-//    
-//    // Store path in NSUserDefaults
-//    [[NSUserDefaults standardUserDefaults] setObject:imagePath forKey:kPLDefaultsAvatarUrl];
-//    
-//    // Sync user defaults
-//    [[NSUserDefaults standardUserDefaults] synchronize];
+    static func StoreImage(image: UIImage, forID: Int) {
+        if let imageData = image.jpegData(compressionQuality: 1) {
+            defaults.set(imageData, forKey: "imageStorageID: \(forID)")
+        }
+    }
 }
