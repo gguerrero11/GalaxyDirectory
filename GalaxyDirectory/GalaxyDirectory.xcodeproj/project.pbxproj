@@ -12,6 +12,7 @@
 		1399EFFE22FE4F3B00C81BA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1399EFFC22FE4F3B00C81BA7 /* Main.storyboard */; };
 		1399F00022FE4F3D00C81BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1399EFFF22FE4F3D00C81BA7 /* Assets.xcassets */; };
 		1399F00322FE4F3D00C81BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1399F00122FE4F3D00C81BA7 /* LaunchScreen.storyboard */; };
+		C16DB28E5D2E5BC60C6692BB /* Pods_GalaxyDirectory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEC898DB66ACAD06C811882 /* Pods_GalaxyDirectory.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,9 @@
 		1399EFFF22FE4F3D00C81BA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1399F00222FE4F3D00C81BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1399F00422FE4F3D00C81BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5FEC898DB66ACAD06C811882 /* Pods_GalaxyDirectory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GalaxyDirectory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BF9BD9321EC7CCCC2BA6AC3 /* Pods-GalaxyDirectory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GalaxyDirectory.release.xcconfig"; path = "Pods/Target Support Files/Pods-GalaxyDirectory/Pods-GalaxyDirectory.release.xcconfig"; sourceTree = "<group>"; };
+		9F26158449FF0FC37F842987 /* Pods-GalaxyDirectory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GalaxyDirectory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GalaxyDirectory/Pods-GalaxyDirectory.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C16DB28E5D2E5BC60C6692BB /* Pods_GalaxyDirectory.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,8 @@
 			children = (
 				1399EFF722FE4F3B00C81BA7 /* GalaxyDirectory */,
 				1399EFF622FE4F3B00C81BA7 /* Products */,
+				5E4BE724D75CDA617E8E4C36 /* Pods */,
+				FB94A3D002C1477737CFDD6F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +71,23 @@
 			path = GalaxyDirectory;
 			sourceTree = "<group>";
 		};
+		5E4BE724D75CDA617E8E4C36 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9F26158449FF0FC37F842987 /* Pods-GalaxyDirectory.debug.xcconfig */,
+				7BF9BD9321EC7CCCC2BA6AC3 /* Pods-GalaxyDirectory.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FB94A3D002C1477737CFDD6F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FEC898DB66ACAD06C811882 /* Pods_GalaxyDirectory.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1399F00722FE4F3D00C81BA7 /* Build configuration list for PBXNativeTarget "GalaxyDirectory" */;
 			buildPhases = (
+				0E5092E252D89A8F533A7652 /* [CP] Check Pods Manifest.lock */,
 				1399EFF122FE4F3B00C81BA7 /* Sources */,
 				1399EFF222FE4F3B00C81BA7 /* Frameworks */,
 				1399EFF322FE4F3B00C81BA7 /* Resources */,
+				FFB5D7B58CC94102C193A34B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +155,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E5092E252D89A8F533A7652 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GalaxyDirectory-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFB5D7B58CC94102C193A34B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GalaxyDirectory/Pods-GalaxyDirectory-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GalaxyDirectory/Pods-GalaxyDirectory-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1399EFF122FE4F3B00C81BA7 /* Sources */ = {
@@ -280,6 +353,7 @@
 		};
 		1399F00822FE4F3D00C81BA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F26158449FF0FC37F842987 /* Pods-GalaxyDirectory.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +372,7 @@
 		};
 		1399F00922FE4F3D00C81BA7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7BF9BD9321EC7CCCC2BA6AC3 /* Pods-GalaxyDirectory.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
