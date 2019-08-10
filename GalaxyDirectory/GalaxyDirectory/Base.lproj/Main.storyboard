@@ -19,13 +19,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="76" id="LW7-8I-N5A">
-                                <rect key="frame" x="0.0" y="28" width="375" height="76"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="121" id="LW7-8I-N5A" customClass="PersonCell" customModule="GalaxyDirectory" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="121"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LW7-8I-N5A" id="dhQ-33-PHw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="75.666666666666671"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="120.66666666666667"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-8q-v9f">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="121"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="121" id="Hhc-mo-1gy"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUPREME LEADER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mE4-au-Bib">
+                                            <rect key="frame" x="149" y="30" width="210" height="38"/>
+                                            <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="mE4-au-Bib" firstAttribute="top" secondItem="dhQ-33-PHw" secondAttribute="top" constant="30" id="Hva-Ks-F1e"/>
+                                        <constraint firstItem="BbI-8q-v9f" firstAttribute="leading" secondItem="dhQ-33-PHw" secondAttribute="leading" id="cJi-g8-JeJ"/>
+                                        <constraint firstItem="BbI-8q-v9f" firstAttribute="top" secondItem="dhQ-33-PHw" secondAttribute="top" id="fhR-qG-HQu"/>
+                                        <constraint firstAttribute="bottom" secondItem="BbI-8q-v9f" secondAttribute="bottom" constant="-0.33333333333334281" id="iOl-mE-zk3"/>
+                                        <constraint firstAttribute="trailing" secondItem="BbI-8q-v9f" secondAttribute="trailing" id="tRf-cv-B2A"/>
+                                        <constraint firstAttribute="trailing" secondItem="mE4-au-Bib" secondAttribute="trailing" constant="16" id="uOe-G9-3Db"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="mE4-au-Bib" id="Lwp-Ge-XHe"/>
+                                    <outlet property="profilePic" destination="BbI-8q-v9f" id="Mvn-e5-5S6"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
