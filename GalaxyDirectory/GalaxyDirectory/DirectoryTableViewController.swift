@@ -42,6 +42,12 @@ class DirectoryTableViewController: UITableViewController {
             self.personArray.append(person)
         })
     }
+    
+    func cellDetailsVisible(cell: PersonCell, visible: Bool) {
+        cell.birthdate.alpha = visible ? 1 : 0
+        cell.forceSensitive.alpha = visible ? 1 : 0
+        cell.profilePic.alpha = visible ? 1 : 0.55
+    }
 
     // MARK: - Table view data source
 
@@ -57,14 +63,53 @@ class DirectoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
         let person = personArray[indexPath.row]
         cell.nameLabel.text = person.firstName + " " + person.lastName
+        cell.affiliation.text = person.affiliation
+        cell.detailBottomConstraint.constant = -40
+        cell.forceSensitive.isHidden = !person.forceSensitive
+        cell.selectionStyle = .none
         
-        if let picURL = person.profilePicture {
-            cell.profilePic.load(url: picURL)
-            cell.profilePic.clipsToBounds = true
+        // If picture exists...
+        if let pic = person.profilePicture {
+            cell.profilePic.image = pic
+        } else {
+            // then check storage...
+            
+            if let picURL = person.profilePictureURL {
+                cell.profilePic.load(url: picURL)
+                cell.profilePic.clipsToBounds = true
+            }
         }
+
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
+        let person = personArray[indexPath.row]
+        selectedIndex = indexPath
+        cell.detailBottomConstraint.constant = 20
+//        tableView.beginUpdates()
+//        cellDetailsVisible(cell: cell, visible: true)
+//        tableView.endUpdates()
+        
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
+        cell.detailBottomConstraint.constant = -40
+//        cellDetailsVisible(cell: cell, visible: false)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let expandedHeight: CGFloat = 131 //view.frame.height - 125
+        let shrunkHeight: CGFloat = 121
+        var result = shrunkHeight
+        if let selectedRow = selectedIndex?.row {
+            result = (selectedRow == indexPath.row) ? expandedHeight : shrunkHeight
+        }
+        return result
+    }
 }
 
 class PersonCell: UITableViewCell {
@@ -73,6 +118,7 @@ class PersonCell: UITableViewCell {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var birthdate: UILabel!
     @IBOutlet weak var forceSensitive: UILabel!
+    @IBOutlet weak var detailBottomConstraint: NSLayoutConstraint!
 }
 
 extension UIImageView {
