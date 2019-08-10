@@ -13,13 +13,32 @@ class DirectoryTableViewController: UITableViewController {
     
     let requestURL = "https://edge.ldscdn.org/mobile/interview/directory"
     let session = Alamofire.Session()
+    var personArray = [Person]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         session.request(requestURL).responseJSON { (response) in
+            /*                      SAMPLE JSON
+             {
+                 "individuals": [
+                     {
+                         "id":1,
+                         "firstName":"Luke",
+                         "lastName":"Skywalker",
+                         "birthdate":"1963-05-05",
+                         "profilePicture":"https://edge.ldscdn.org/mobile/interview/07.png",
+                         "forceSensitive":true,
+                         "affiliation":"JEDI"
+                     },
+             */
+            
+            
             if let json = try? response.result.get() as? [String:[[String:Any]]] {
-//                print(json["individuals"]?.first?["profilePicture"])
+                guard let array = json["individuals"] else { return }
+                array.forEach({ (personDict) in
+                    self.personArray.append(Person(dict: personDict))
+                })
             }
         }
     }

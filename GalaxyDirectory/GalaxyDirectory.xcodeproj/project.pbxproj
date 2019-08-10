@@ -13,6 +13,7 @@
 		1399F00022FE4F3D00C81BA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1399EFFF22FE4F3D00C81BA7 /* Assets.xcassets */; };
 		1399F00322FE4F3D00C81BA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1399F00122FE4F3D00C81BA7 /* LaunchScreen.storyboard */; };
 		1399F00B22FE573C00C81BA7 /* DirectoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399F00A22FE573C00C81BA7 /* DirectoryTableViewController.swift */; };
+		1399F00D22FE655E00C81BA7 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1399F00C22FE655E00C81BA7 /* Person.swift */; };
 		C16DB28E5D2E5BC60C6692BB /* Pods_GalaxyDirectory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FEC898DB66ACAD06C811882 /* Pods_GalaxyDirectory.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		1399F00222FE4F3D00C81BA7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1399F00422FE4F3D00C81BA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1399F00A22FE573C00C81BA7 /* DirectoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectoryTableViewController.swift; sourceTree = "<group>"; };
+		1399F00C22FE655E00C81BA7 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		5FEC898DB66ACAD06C811882 /* Pods_GalaxyDirectory.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GalaxyDirectory.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7BF9BD9321EC7CCCC2BA6AC3 /* Pods-GalaxyDirectory.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GalaxyDirectory.release.xcconfig"; path = "Pods/Target Support Files/Pods-GalaxyDirectory/Pods-GalaxyDirectory.release.xcconfig"; sourceTree = "<group>"; };
 		9F26158449FF0FC37F842987 /* Pods-GalaxyDirectory.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GalaxyDirectory.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GalaxyDirectory/Pods-GalaxyDirectory.debug.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				1399EFF822FE4F3B00C81BA7 /* AppDelegate.swift */,
 				1399EFFA22FE4F3B00C81BA7 /* ViewController.swift */,
 				1399F00A22FE573C00C81BA7 /* DirectoryTableViewController.swift */,
+				1399F00C22FE655E00C81BA7 /* Person.swift */,
 				1399EFFC22FE4F3B00C81BA7 /* Main.storyboard */,
 				1399EFFF22FE4F3D00C81BA7 /* Assets.xcassets */,
 				1399F00122FE4F3D00C81BA7 /* LaunchScreen.storyboard */,
@@ -213,6 +216,7 @@
 			files = (
 				1399EFFB22FE4F3B00C81BA7 /* ViewController.swift in Sources */,
 				1399F00B22FE573C00C81BA7 /* DirectoryTableViewController.swift in Sources */,
+				1399F00D22FE655E00C81BA7 /* Person.swift in Sources */,
 				1399EFF922FE4F3B00C81BA7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
