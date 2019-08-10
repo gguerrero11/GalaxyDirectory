@@ -66,7 +66,7 @@
                                             <rect key="frame" x="202" y="533" width="157" height="30"/>
                                             <state key="normal" title="Alternate Detail View &gt;"/>
                                             <connections>
-                                                <segue destination="FVJ-cZ-D3X" kind="show" id="Yjt-uw-J6c"/>
+                                                <segue destination="FVJ-cZ-D3X" kind="show" identifier="detailSegue" id="Yjt-uw-J6c"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -129,7 +129,7 @@
                             </navigationBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i2s-fO-lK0">
                                 <rect key="frame" x="16" y="108" width="343" height="258"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="QKl-qL-nK3"/>
                                     <constraint firstAttribute="height" constant="258" id="xX3-Al-kus"/>
@@ -142,7 +142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZP-6f-vKh">
-                                <rect key="frame" x="16" y="408" width="77" height="36"/>
+                                <rect key="frame" x="16" y="408" width="76.666666666666671" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -159,13 +159,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="AFFILIATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0H-Yf-0VI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AFFILIATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0H-Yf-0VI">
                                 <rect key="frame" x="16" y="563" width="77" height="16"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Affiliation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-mG-jcI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Affiliation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hMy-mG-jcI">
                                 <rect key="frame" x="16" y="587" width="122" height="36"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
@@ -174,21 +174,28 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="w0H-Yf-0VI" firstAttribute="leading" secondItem="8Lu-Aa-yS7" secondAttribute="leading" id="6Yh-sr-JGz"/>
                             <constraint firstItem="PIW-L4-0Kt" firstAttribute="leading" secondItem="jts-p6-lkv" secondAttribute="leading" id="6ho-oh-blE"/>
                             <constraint firstItem="i2s-fO-lK0" firstAttribute="top" secondItem="rgi-EJ-Hob" secondAttribute="top" constant="20" id="6o0-fF-Br0"/>
                             <constraint firstItem="hMy-mG-jcI" firstAttribute="top" secondItem="w0H-Yf-0VI" secondAttribute="bottom" constant="8" id="AB0-aF-L16"/>
                             <constraint firstItem="jts-p6-lkv" firstAttribute="leading" secondItem="8Lu-Aa-yS7" secondAttribute="leading" id="BHa-p9-SXc"/>
                             <constraint firstItem="PIW-L4-0Kt" firstAttribute="top" secondItem="jts-p6-lkv" secondAttribute="bottom" constant="8" id="DMy-kK-wRN"/>
+                            <constraint firstItem="rgi-EJ-Hob" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hMy-mG-jcI" secondAttribute="trailing" constant="16" id="GVq-rH-geK"/>
                             <constraint firstItem="DZP-6f-vKh" firstAttribute="top" secondItem="8Lu-Aa-yS7" secondAttribute="bottom" constant="8" id="GyF-we-tPB"/>
                             <constraint firstItem="DZP-6f-vKh" firstAttribute="leading" secondItem="8Lu-Aa-yS7" secondAttribute="leading" id="Kyt-zi-RAZ"/>
                             <constraint firstItem="rgi-EJ-Hob" firstAttribute="trailing" secondItem="i2s-fO-lK0" secondAttribute="trailing" constant="16" id="QCC-B2-Lp4"/>
                             <constraint firstItem="hMy-mG-jcI" firstAttribute="leading" secondItem="w0H-Yf-0VI" secondAttribute="leading" id="ZxD-nA-jbT"/>
                             <constraint firstItem="i2s-fO-lK0" firstAttribute="leading" secondItem="rgi-EJ-Hob" secondAttribute="leading" constant="16" id="ceP-lJ-dmY"/>
+                            <constraint firstItem="rgi-EJ-Hob" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PIW-L4-0Kt" secondAttribute="trailing" constant="16" id="fy1-6j-fcp"/>
                             <constraint firstItem="i2s-fO-lK0" firstAttribute="centerX" secondItem="rgi-EJ-Hob" secondAttribute="centerX" id="gZD-e0-gue"/>
                             <constraint firstItem="w0H-Yf-0VI" firstAttribute="top" secondItem="PIW-L4-0Kt" secondAttribute="bottom" constant="30" id="iGc-V5-y8D"/>
                             <constraint firstItem="8Lu-Aa-yS7" firstAttribute="top" secondItem="i2s-fO-lK0" secondAttribute="bottom" constant="18" id="isc-z4-s4S"/>
+                            <constraint firstItem="rgi-EJ-Hob" firstAttribute="trailing" secondItem="jts-p6-lkv" secondAttribute="trailing" constant="295" id="jem-0G-Zu8"/>
+                            <constraint firstItem="rgi-EJ-Hob" firstAttribute="trailing" secondItem="8Lu-Aa-yS7" secondAttribute="trailing" constant="321" id="kuO-qi-vFq"/>
+                            <constraint firstItem="rgi-EJ-Hob" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DZP-6f-vKh" secondAttribute="trailing" constant="16" id="lFq-Ee-43P"/>
                             <constraint firstItem="8Lu-Aa-yS7" firstAttribute="leading" secondItem="rgi-EJ-Hob" secondAttribute="leading" constant="16" id="t8k-ve-TMe"/>
                             <constraint firstItem="jts-p6-lkv" firstAttribute="top" secondItem="DZP-6f-vKh" secondAttribute="bottom" constant="29" id="tQr-Gz-49b"/>
+                            <constraint firstItem="rgi-EJ-Hob" firstAttribute="trailing" secondItem="w0H-Yf-0VI" secondAttribute="trailing" constant="282" id="v85-oe-amQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rgi-EJ-Hob"/>
                     </view>

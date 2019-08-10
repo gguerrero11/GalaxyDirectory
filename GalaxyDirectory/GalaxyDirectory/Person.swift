@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Person {
+class Person: NSObject {
     var id: Int
     var firstName: String
     var lastName: String
@@ -27,5 +27,9 @@ struct Person {
         forceSensitive  = dict["forceSensitive"] as! Bool
         affiliation     = (dict["affiliation"] as! String).replacingOccurrences(of: "_", with: " ")
         // Cache Pictures
+    }
+    
+    func setImage(image: UIImage) {
+        profilePicture = image
     }
 }

@@ -16,6 +16,7 @@ class DirectoryTableViewController: UITableViewController {
     var personArray = [Person]()
     var affiliations = Set<String>()
     var selectedIndex: IndexPath?
+    var selectedPerson: Person?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,7 @@ class DirectoryTableViewController: UITableViewController {
             // then check storage...
             if let storedImage = Storage.GetImage(forID: person.id) {
                 cell.profilePic.image = storedImage
+                person.profilePicture = storedImage
             } else {
                 // then download from URL (and save)
                 if let picURL = person.profilePictureURL {
@@ -82,6 +84,7 @@ class DirectoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
+        selectedPerson = personArray[indexPath.row]
         tableView.performBatchUpdates({
             // this animates the cell height
         }) { (bool) in
@@ -97,6 +100,14 @@ class DirectoryTableViewController: UITableViewController {
             result = (selectedRow == indexPath.row) ? expandedHeight : shrunkHeight
         }
         return result
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailSegue" { // would normally use constants
+            if let detailView = segue.destination as? AlternateDetailViewViewController, (selectedPerson != nil) {
+                detailView.person = selectedPerson!
+            }
+        }
     }
 }
 
