@@ -43,12 +43,6 @@ class DirectoryTableViewController: UITableViewController {
         })
     }
     
-    func cellDetailsVisible(cell: PersonCell, visible: Bool) {
-        cell.birthdate.alpha = visible ? 1 : 0
-        cell.forceSensitive.alpha = visible ? 1 : 0
-        cell.profilePic.alpha = visible ? 1 : 0.55
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,7 +58,7 @@ class DirectoryTableViewController: UITableViewController {
         let person = personArray[indexPath.row]
         cell.nameLabel.text = person.firstName + " " + person.lastName
         cell.affiliation.text = person.affiliation
-        cell.detailBottomConstraint.constant = -40
+        cell.birthdate.text = "DOB: " + person.birthdate
         cell.forceSensitive.isHidden = !person.forceSensitive
         cell.selectionStyle = .none
         cell.profilePic.clipsToBounds = true
@@ -87,25 +81,16 @@ class DirectoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
-        let person = personArray[indexPath.row]
         selectedIndex = indexPath
-        cell.detailBottomConstraint.constant = 20
-//        tableView.beginUpdates()
-//        cellDetailsVisible(cell: cell, visible: true)
-//        tableView.endUpdates()
-        
-        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
-        cell.detailBottomConstraint.constant = -40
-//        cellDetailsVisible(cell: cell, visible: false)
+        tableView.performBatchUpdates({
+            // this animates the cell height
+        }) { (bool) in
+            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let expandedHeight: CGFloat = 150 //view.frame.height - 125
+        let expandedHeight: CGFloat = view.frame.height - 125
         let shrunkHeight: CGFloat = 121
         var result = shrunkHeight
         if let selectedRow = selectedIndex?.row {
@@ -121,7 +106,6 @@ class PersonCell: UITableViewCell {
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var birthdate: UILabel!
     @IBOutlet weak var forceSensitive: UILabel!
-    @IBOutlet weak var detailBottomConstraint: NSLayoutConstraint!
 }
 
 extension UIImageView {
