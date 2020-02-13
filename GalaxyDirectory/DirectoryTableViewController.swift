@@ -14,7 +14,7 @@ class DirectoryTableViewController: UITableViewController {
     let requestURL = "https://edge.ldscdn.org/mobile/interview/directory"
     let session = Alamofire.Session()
     var personArray = [Person]()
-    var affiliations = Set<String>()
+    var affiliations = [String]()
     var selectedIndex: IndexPath?
     var selectedPerson: Person?
     var cellOpen: Bool = false
@@ -28,17 +28,23 @@ class DirectoryTableViewController: UITableViewController {
         if let storageDictArray = Storage.LoadDict() {
             convertDictToPersons(dictArray: storageDictArray)
             tableView.reloadData()
-        } else {
-            
         }
     }
     
     func convertDictToPersons(dictArray: [[String:Any]]) {
+        // Using a Set easily eliminates duplicates of affiliations
+        var affiliationSet = Set<String>()
+        
         dictArray.forEach({ (personDict) in
             let person = Person(dict: personDict)
-            self.affiliations.insert(person.affiliation)
+            affiliationSet.insert(person.affiliation)
             self.personArray.append(person)
         })
+        
+        // converts to an array that can be used for section titles
+        for affiliation in affiliationSet.sorted() {
+            affiliations.append(affiliation)
+        }
     }
     
     func downloadDirectory() {
@@ -76,17 +82,38 @@ class DirectoryTableViewController: UITableViewController {
             }
         }
     }
+    
+    func filterByAffiliation(atSection section: Int) -> [Person] {
+        let affiliationFilter = affiliations[section]
+        let filteredPersonArray = personArray.filter { $0.affiliation == affiliationFilter }
+        return filteredPersonArray
+    }
+    
+    func sortFilteredAffiliation(atSection section: Int) -> [Person] {
+        let filteredPersonArray = filterByAffiliation(atSection: section)
+        let sortedPersonArray = filteredPersonArray.sorted {$0.firstName < $1.firstName}
+        return sortedPersonArray
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1  //affiliations.count
+        return affiliations.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return affiliations[section]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personArray.count
+        return filterByAffiliation(atSection: section).count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let person = personArray[indexPath.row]
+        let sortedPersonArray = sortFilteredAffiliation(atSection: indexPath.section)
+        let person = sortedPersonArray[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
         configure(cell: cell, withPerson: person)
         return cell
@@ -94,6 +121,7 @@ class DirectoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
+        let personArray = sortFilteredAffiliation(atSection: indexPath.section)
         selectedPerson = personArray[indexPath.row]
         tableView.beginUpdates()
         tableView.endUpdates()
@@ -104,10 +132,9 @@ class DirectoryTableViewController: UITableViewController {
         let expandedHeight: CGFloat = view.frame.height - 125
         let shrunkHeight: CGFloat = 121
         var result = shrunkHeight
-        guard let selectedRow = selectedIndex?.row else { return result }
         
         // if the selected row is the row this method is inquiring about...
-        if selectedRow == indexPath.row {
+        if selectedIndex == indexPath {
             // and if the cell is already opened...
             if cellOpen {
                 // close the cell
