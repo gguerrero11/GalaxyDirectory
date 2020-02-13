@@ -19,19 +19,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="734" id="LW7-8I-N5A" customClass="PersonCell" customModule="GalaxyDirectory" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="734"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="500" id="LW7-8I-N5A" customClass="PersonCell" customModule="GalaxyDirectory" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="500"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LW7-8I-N5A" id="dhQ-33-PHw">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="733.66666666666663"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="499.66666666666669"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BbI-8q-v9f">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="733.66666666666663"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="499.66666666666669"/>
                                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SUPREME LEADER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mE4-au-Bib">
-                                            <rect key="frame" x="148" y="634" width="211" height="39"/>
+                                            <rect key="frame" x="148" y="400" width="211" height="39"/>
                                             <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="38"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -39,7 +39,7 @@
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESISTANCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4A-wE-gvH">
-                                            <rect key="frame" x="265" y="668" width="94" height="26"/>
+                                            <rect key="frame" x="265" y="434" width="94" height="26"/>
                                             <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="25"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1963-05-05" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kar-nQ-gff">
-                                            <rect key="frame" x="287" y="594" width="72" height="20"/>
+                                            <rect key="frame" x="287" y="360" width="72" height="20"/>
                                             <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="19"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FORCE SENSITIVE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OF5-Rz-C3K">
-                                            <rect key="frame" x="257" y="571" width="102" height="20"/>
+                                            <rect key="frame" x="257" y="337" width="102" height="20"/>
                                             <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="19"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -63,7 +63,7 @@
                                             <size key="shadowOffset" width="1" height="1"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zn-iY-Iqp">
-                                            <rect key="frame" x="202" y="533" width="157" height="30"/>
+                                            <rect key="frame" x="202" y="299" width="157" height="30"/>
                                             <state key="normal" title="Alternate Detail View &gt;"/>
                                             <connections>
                                                 <segue destination="FVJ-cZ-D3X" kind="show" identifier="detailSegue" id="Yjt-uw-J6c"/>

@@ -95,27 +95,25 @@ class DirectoryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
         selectedPerson = personArray[indexPath.row]
-        tableView.performBatchUpdates({
-            // this animates the cell height
-        }) { (bool) in
-            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-        }
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        tableView.scrollToRow(at: indexPath, at: .top, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let tableViewHeight = tableView.tableHeaderView?.frame.height ?? 125
-        let expandedHeight: CGFloat = view.frame.height - tableViewHeight
+        let expandedHeight: CGFloat = view.frame.height - 125
         let shrunkHeight: CGFloat = 121
         var result = shrunkHeight
         guard let selectedRow = selectedIndex?.row else { return result }
         
-        // if the selected row is the method is inquiring about...
+        // if the selected row is the row this method is inquiring about...
         if selectedRow == indexPath.row {
             // and if the cell is already opened...
             if cellOpen {
                 // close the cell
                 result = shrunkHeight
                 cellOpen = false
+                selectedIndex = nil
             } else {
                 // open the cell
                 result = expandedHeight
