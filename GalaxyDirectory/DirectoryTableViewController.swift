@@ -17,22 +17,19 @@ class DirectoryTableViewController: UITableViewController {
     var affiliations = Set<String>()
     var selectedIndex: IndexPath?
     var selectedPerson: Person?
+    var cellOpen: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getDirectory()
+    }
+    
+    func getDirectory() {
         if let storageDictArray = Storage.LoadDict() {
             convertDictToPersons(dictArray: storageDictArray)
             tableView.reloadData()
         } else {
-            session.request(requestURL).responseJSON { (response) in
-                if let json = try? response.result.get() as? [String:[[String:Any]]] {
-                    guard let dictArray = json["individuals"] else { return }
-                    self.convertDictToPersons(dictArray: dictArray)
-                    Storage.SaveDict(dict: dictArray)
-                    self.tableView.reloadData()
-                }
-            }
+            
         }
     }
     
@@ -44,25 +41,24 @@ class DirectoryTableViewController: UITableViewController {
         })
     }
     
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1  //affiliations.count
+    func downloadDirectory() {
+        session.request(requestURL).responseJSON { (response) in
+            if let json = try? response.result.get() as? [String:[[String:Any]]] {
+                guard let dictArray = json["individuals"] else { return }
+                self.convertDictToPersons(dictArray: dictArray)
+                Storage.SaveDict(dict: dictArray)
+                self.tableView.reloadData()
+            }
+        }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personArray.count
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
-        let person = personArray[indexPath.row]
+    
+    func configure(cell: PersonCell, withPerson person: Person) {
         cell.nameLabel.text = person.firstName + " " + person.lastName
         cell.affiliation.text = person.affiliation
         cell.birthdate.text = "DOB: " + person.birthdate
         cell.forceSensitive.isHidden = !person.forceSensitive
-        cell.selectionStyle = .none
         cell.profilePic.clipsToBounds = true
+        cell.selectionStyle = .none
         
         // If picture exists...
         if let pic = person.profilePicture {
@@ -79,6 +75,20 @@ class DirectoryTableViewController: UITableViewController {
                 }
             }
         }
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1  //affiliations.count
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return personArray.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let person = personArray[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! PersonCell
+        configure(cell: cell, withPerson: person)
         return cell
     }
     
@@ -93,11 +103,24 @@ class DirectoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let expandedHeight: CGFloat = view.frame.height - 125
+        let tableViewHeight = tableView.tableHeaderView?.frame.height ?? 125
+        let expandedHeight: CGFloat = view.frame.height - tableViewHeight
         let shrunkHeight: CGFloat = 121
         var result = shrunkHeight
-        if let selectedRow = selectedIndex?.row {
-            result = (selectedRow == indexPath.row) ? expandedHeight : shrunkHeight
+        guard let selectedRow = selectedIndex?.row else { return result }
+        
+        // if the selected row is the method is inquiring about...
+        if selectedRow == indexPath.row {
+            // and if the cell is already opened...
+            if cellOpen {
+                // close the cell
+                result = shrunkHeight
+                cellOpen = false
+            } else {
+                // open the cell
+                result = expandedHeight
+                cellOpen = true
+            }
         }
         return result
     }

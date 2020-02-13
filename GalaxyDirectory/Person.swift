@@ -26,7 +26,6 @@ class Person: NSObject {
         profilePictureURL  = URL(string: dict["profilePicture"] as! String)
         forceSensitive  = dict["forceSensitive"] as! Bool
         affiliation     = (dict["affiliation"] as! String).replacingOccurrences(of: "_", with: " ")
-        // Cache Pictures
     }
     
     func setImage(image: UIImage) {

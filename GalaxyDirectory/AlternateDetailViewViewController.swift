@@ -8,6 +8,8 @@
 
 import UIKit
 
+// This is to provide a more traditional detail view that gets pushed on to the view
+
 class AlternateDetailViewViewController: UIViewController {
 
     @IBOutlet weak var name: UILabel!
@@ -26,18 +28,5 @@ class AlternateDetailViewViewController: UIViewController {
         affiliation.text = person.affiliation
         imageView.image = person.profilePicture
         imageView.contentMode = .scaleAspectFit
-
-        // Do any additional setup after loading the view.
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
