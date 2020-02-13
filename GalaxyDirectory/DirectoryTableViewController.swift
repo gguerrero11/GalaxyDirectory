@@ -28,6 +28,8 @@ class DirectoryTableViewController: UITableViewController {
         if let storageDictArray = Storage.LoadDict() {
             convertDictToPersons(dictArray: storageDictArray)
             tableView.reloadData()
+        } else {
+            downloadDirectory()
         }
     }
     
