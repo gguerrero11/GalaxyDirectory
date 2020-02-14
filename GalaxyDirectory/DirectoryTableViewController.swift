@@ -7,12 +7,11 @@
 //
 
 import UIKit
-import Alamofire
 
 class DirectoryTableViewController: UITableViewController {
     
     let requestURL = "https://edge.ldscdn.org/mobile/interview/directory"
-    let session = Alamofire.Session()
+    let session = URLSession.shared
     var personArray = [Person]()
     var affiliations = [String]()
     var selectedIndex: IndexPath?
@@ -50,14 +49,34 @@ class DirectoryTableViewController: UITableViewController {
     }
     
     func downloadDirectory() {
-        session.request(requestURL).responseJSON { (response) in
-            if let json = try? response.result.get() as? [String:[[String:Any]]] {
-                guard let dictArray = json["individuals"] else { return }
-                self.convertDictToPersons(dictArray: dictArray)
-                Storage.SaveDict(dict: dictArray)
-                self.tableView.reloadData()
+        let url = URL(string: requestURL)
+        let task = session.dataTask(with: url!) { (data, response, error) in
+            
+            if error != nil {
+                print("Error: \(error.debugDescription)")
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode)
+                else {
+                    print("Bad Request: \(response.debugDescription)")
+                return
+            }
+            
+            if let jsonResult = try? JSONSerialization.jsonObject(with: data!, options: []) {
+                if let json = jsonResult as? [String:[[String:Any]]] {
+                    guard let dictArray = json["individuals"] else { return }
+                    self.convertDictToPersons(dictArray: dictArray)
+                    Storage.SaveDict(dict: dictArray)
+                    
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
             }
         }
+        task.resume()
     }
     
     func configure(cell: PersonCell, withPerson person: Person) {
